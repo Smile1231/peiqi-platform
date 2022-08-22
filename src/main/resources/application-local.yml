@@ -7,4 +7,18 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: root
-    url: jdbc:mysql://localhost:3306/peiqi_db?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3307/peiqi?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
+    type: com.alibaba.druid.pool.DruidDataSource
+  main:
+    banner-mode: off
+  servlet:
+    multipart:
+      max-file-size: 80MB
+      max-request-size: 100MB
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.sap.peiqiplatform.entity
+shell:
+ deployFile: deploy.sh

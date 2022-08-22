@@ -1,4 +1,4 @@
-package com.sap.peiqiplantform.config;
+package com.sap.peiqiplatform.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

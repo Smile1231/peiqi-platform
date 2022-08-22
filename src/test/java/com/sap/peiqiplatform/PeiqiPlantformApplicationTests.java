@@ -1,5 +1,7 @@
-package com.sap.peiqiplantform;
+package com.sap.peiqiplatform;
 
+import com.sap.peiqiplatform.entity.po.AppTable;
+import com.sap.peiqiplatform.mapper.AppTableMapper;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -11,16 +13,16 @@ import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.channels.Channels;
-import java.nio.channels.FileChannel;
 import java.nio.channels.ReadableByteChannel;
-import java.util.Objects;
+import java.util.ArrayList;
 
 @SpringBootTest
 class PeiqiPlantformApplicationTests {
+
+    @Autowired
+    private AppTableMapper appTableMapper;
 
     @Autowired
     private RestTemplate restTemplate;
@@ -50,10 +52,24 @@ class PeiqiPlantformApplicationTests {
         }
     }
 
-    public static void main(String[] args) {
-        String s1 = null;
-        String s2 = "mm";
-        System.out.println(Objects.equals(s1,s2));
+    @Test
+    void contextInsertAppTable(){
+        ArrayList<AppTable> list = new ArrayList<>();
+        AppTable appTable = new AppTable();
+        appTable.setApplicationName("IAClientNode");
+        appTable.setCreateBy("Darry");
+        list.add(appTable);
+        AppTable appTable1 = new AppTable();
+        appTable1.setApplicationName("Server");
+        appTable1.setCreateBy("Darry");
+        list.add(appTable1);
+        AppTable appTable2 = new AppTable();
+        appTable2.setApplicationName("WorkSpace");
+        appTable2.setCreateBy("Darry");
+        list.add(appTable2);
+
+        appTableMapper.bulkInsertAppTable(list);
+
     }
 
 }
