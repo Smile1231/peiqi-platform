@@ -2,7 +2,6 @@ package com.sap.peiqiplatform.config;
 
 import com.alibaba.fastjson.JSONObject;
 import com.sap.peiqiplatform.entity.vo.ResultVO;
-import com.sap.peiqiplatform.exception.APIException;
 import com.sap.peiqiplatform.nums.ResultCodeEnum;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  * @Description TODO
  * @createTime 2022-08-22  09:23:00
  */
-@RestControllerAdvice
+@RestControllerAdvice(basePackages = {"com.sap.peiqiplatform.service","com.sap.peiqiplatform.check","com.sap.peiqiplatform.controller"})
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)

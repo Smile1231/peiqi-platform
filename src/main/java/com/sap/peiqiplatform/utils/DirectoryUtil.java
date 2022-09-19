@@ -69,7 +69,7 @@ public class DirectoryUtil {
         return getDailyDeployRelativePath() + SLASH + uidDir;
     }
     // src/main/resources/deploy/2022-08-22/32hj2n1j23n2j1k32n132j1/log.txt
-    public static String getDailyDeployLogFilePath(String realUidPath, String fileName){
+    public static String getAllPathByPathAndName(String realUidPath, String fileName){
         return realUidPath + SLASH + fileName;
     }
 

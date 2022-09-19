@@ -11,5 +11,5 @@ import com.sap.peiqiplatform.entity.dto.request.VoluntaryDeployEntity;
  */
 public interface IVoluntarySubmitDeployService {
 
-    void submitDeployAction(VoluntaryDeployEntity voluntaryDeployEntity);
+    void submitDeployAction(VoluntaryDeployEntity voluntaryDeployEntity) throws InterruptedException;
 }

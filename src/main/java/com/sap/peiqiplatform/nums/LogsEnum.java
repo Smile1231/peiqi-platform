@@ -18,8 +18,18 @@ public enum LogsEnum {
     INSERT_DATA_SUCCESSFULLY("insert data successfully!"),
     START_BUILD_RESPONSE_BODY("start build response body! "),
     START_VOLUNTARY_DEPLOY("start voluntary deploy ..."),
+    START_INSERT_INTO_DEPLOY_INFO("start insert into deploy record"),
+    START_INSERT_DEPLOY_LOG_INFO("start insert into deploy log ."),
+    START_EXECUTE_DEPLOY_VOLUNTARY("start execute deploy voluntary."),
+    END_DEPLOY_VOLUNTARY("end deploy voluntary ."),
+    START_DOWNLOAD_MTAR_EXAMPLE_FILE("start download mtar example file ."),
+    START_GET_ALL_APPLICATION_NAMES("start to get all application names ."),
+    START_GET_APP_VERSION_INFO("start get application version info list"),
+    START_INVOLUNTARY_DEPLOY("start inVoluntary deploy ..."),
+    END_DEPLOY_INVOLUNTARY("end deploy involuntary ."),
 
-    START_INSERT_INTO_DEPLOY_INFO("start insert into deploy record")
+    START_EXECUTE_DEPLOY_INVOLUNTARY("start execute deploy involuntary.")
+
 
     ;
 

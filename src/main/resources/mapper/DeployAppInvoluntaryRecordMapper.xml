@@ -1,158 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sap.peiqiplatform.mapper.DeployAppInvoluntaryRecordMapper">
-  <resultMap id="BaseResultMap" type="com.sap.peiqiplatform.entity.po.DeployAppInvoluntaryRecord">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="mtar_upload_flag" jdbcType="INTEGER" property="mtarUploadFlag" />
-    <result column="application_id" jdbcType="INTEGER" property="applicationId" />
-    <result column="app_version" jdbcType="VARCHAR" property="appVersion" />
-    <result column="api_end_point" jdbcType="VARCHAR" property="apiEndPoint" />
-    <result column="org_name" jdbcType="VARCHAR" property="orgName" />
-    <result column="space_name" jdbcType="VARCHAR" property="spaceName" />
-    <result column="extension_file_uid" jdbcType="INTEGER" property="extensionFileUid" />
-    <result column="deploy_account" jdbcType="VARCHAR" property="deployAccount" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    id, mtar_upload_flag, application_id, app_version, api_end_point, org_name, space_name, 
-    extension_file_uid, deploy_account, create_time, create_by
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from deploy_app_involuntary_record
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from deploy_app_involuntary_record
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.sap.peiqiplatform.entity.po.DeployAppInvoluntaryRecord" useGeneratedKeys="true">
-    insert into deploy_app_involuntary_record (mtar_upload_flag, application_id, app_version, 
-      api_end_point, org_name, space_name, 
-      extension_file_uid, deploy_account, create_time, 
-      create_by)
-    values (#{mtarUploadFlag,jdbcType=INTEGER}, #{applicationId,jdbcType=INTEGER}, #{appVersion,jdbcType=VARCHAR}, 
-      #{apiEndPoint,jdbcType=VARCHAR}, #{orgName,jdbcType=VARCHAR}, #{spaceName,jdbcType=VARCHAR}, 
-      #{extensionFileUid,jdbcType=INTEGER}, #{deployAccount,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{createBy,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.sap.peiqiplatform.entity.po.DeployAppInvoluntaryRecord" useGeneratedKeys="true">
-    insert into deploy_app_involuntary_record
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="mtarUploadFlag != null">
-        mtar_upload_flag,
-      </if>
-      <if test="applicationId != null">
-        application_id,
-      </if>
-      <if test="appVersion != null">
-        app_version,
-      </if>
-      <if test="apiEndPoint != null">
-        api_end_point,
-      </if>
-      <if test="orgName != null">
-        org_name,
-      </if>
-      <if test="spaceName != null">
-        space_name,
-      </if>
-      <if test="extensionFileUid != null">
-        extension_file_uid,
-      </if>
-      <if test="deployAccount != null">
-        deploy_account,
-      </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="createBy != null">
-        create_by,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="mtarUploadFlag != null">
-        #{mtarUploadFlag,jdbcType=INTEGER},
-      </if>
-      <if test="applicationId != null">
-        #{applicationId,jdbcType=INTEGER},
-      </if>
-      <if test="appVersion != null">
-        #{appVersion,jdbcType=VARCHAR},
-      </if>
-      <if test="apiEndPoint != null">
-        #{apiEndPoint,jdbcType=VARCHAR},
-      </if>
-      <if test="orgName != null">
-        #{orgName,jdbcType=VARCHAR},
-      </if>
-      <if test="spaceName != null">
-        #{spaceName,jdbcType=VARCHAR},
-      </if>
-      <if test="extensionFileUid != null">
-        #{extensionFileUid,jdbcType=INTEGER},
-      </if>
-      <if test="deployAccount != null">
-        #{deployAccount,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="createBy != null">
-        #{createBy,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.sap.peiqiplatform.entity.po.DeployAppInvoluntaryRecord">
-    update deploy_app_involuntary_record
-    <set>
-      <if test="mtarUploadFlag != null">
-        mtar_upload_flag = #{mtarUploadFlag,jdbcType=INTEGER},
-      </if>
-      <if test="applicationId != null">
-        application_id = #{applicationId,jdbcType=INTEGER},
-      </if>
-      <if test="appVersion != null">
-        app_version = #{appVersion,jdbcType=VARCHAR},
-      </if>
-      <if test="apiEndPoint != null">
-        api_end_point = #{apiEndPoint,jdbcType=VARCHAR},
-      </if>
-      <if test="orgName != null">
-        org_name = #{orgName,jdbcType=VARCHAR},
-      </if>
-      <if test="spaceName != null">
-        space_name = #{spaceName,jdbcType=VARCHAR},
-      </if>
-      <if test="extensionFileUid != null">
-        extension_file_uid = #{extensionFileUid,jdbcType=INTEGER},
-      </if>
-      <if test="deployAccount != null">
-        deploy_account = #{deployAccount,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="createBy != null">
-        create_by = #{createBy,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.sap.peiqiplatform.entity.po.DeployAppInvoluntaryRecord">
-    update deploy_app_involuntary_record
-    set mtar_upload_flag = #{mtarUploadFlag,jdbcType=INTEGER},
-      application_id = #{applicationId,jdbcType=INTEGER},
-      app_version = #{appVersion,jdbcType=VARCHAR},
-      api_end_point = #{apiEndPoint,jdbcType=VARCHAR},
-      org_name = #{orgName,jdbcType=VARCHAR},
-      space_name = #{spaceName,jdbcType=VARCHAR},
-      extension_file_uid = #{extensionFileUid,jdbcType=INTEGER},
-      deploy_account = #{deployAccount,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      create_by = #{createBy,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+
+    <resultMap id="BaseResultMap" type="com.sap.peiqiplatform.entity.po.DeployAppInvoluntaryRecord">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="mtarUploadFlag" column="mtar_upload_flag" jdbcType="INTEGER"/>
+            <result property="applicationName" column="application_name" jdbcType="VARCHAR"/>
+            <result property="appVersion" column="app_version" jdbcType="VARCHAR"/>
+            <result property="apiEndPoint" column="api_end_point" jdbcType="VARCHAR"/>
+            <result property="orgName" column="org_name" jdbcType="VARCHAR"/>
+            <result property="spaceName" column="space_name" jdbcType="VARCHAR"/>
+            <result property="extensionFileUid" column="extension_file_uid" jdbcType="VARCHAR"/>
+            <result property="deployAccount" column="deploy_account" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,mtar_upload_flag,application_name,
+        app_version,api_end_point,org_name,
+        space_name,extension_file_uid,deploy_account,
+        create_time,create_by
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from deploy_app_involuntary_record
+        where  id = #{id,jdbcType=INTEGER} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from deploy_app_involuntary_record
+        where  id = #{id,jdbcType=INTEGER} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.sap.peiqiplatform.entity.po.DeployAppInvoluntaryRecord" useGeneratedKeys="true">
+        insert into deploy_app_involuntary_record
+        ( id,mtar_upload_flag,application_name
+        ,app_version,api_end_point,org_name
+        ,space_name,extension_file_uid,deploy_account
+        ,create_time,create_by)
+        values (#{id,jdbcType=INTEGER},#{mtarUploadFlag,jdbcType=INTEGER},#{applicationName,jdbcType=VARCHAR}
+        ,#{appVersion,jdbcType=VARCHAR},#{apiEndPoint,jdbcType=VARCHAR},#{orgName,jdbcType=VARCHAR}
+        ,#{spaceName,jdbcType=VARCHAR},#{extensionFileUid,jdbcType=VARCHAR},#{deployAccount,jdbcType=VARCHAR}
+        ,#{createTime,jdbcType=TIMESTAMP},#{createBy,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.sap.peiqiplatform.entity.po.DeployAppInvoluntaryRecord" useGeneratedKeys="true">
+        insert into deploy_app_involuntary_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="mtarUploadFlag != null">mtar_upload_flag,</if>
+                <if test="applicationName != null">application_name,</if>
+                <if test="appVersion != null">app_version,</if>
+                <if test="apiEndPoint != null">api_end_point,</if>
+                <if test="orgName != null">org_name,</if>
+                <if test="spaceName != null">space_name,</if>
+                <if test="extensionFileUid != null">extension_file_uid,</if>
+                <if test="deployAccount != null">deploy_account,</if>
+                <if test="createTime != null">create_time,</if>
+                <if test="createBy != null">create_by,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id,jdbcType=INTEGER},</if>
+                <if test="mtarUploadFlag != null">#{mtarUploadFlag,jdbcType=INTEGER},</if>
+                <if test="applicationName != null">#{applicationName,jdbcType=VARCHAR},</if>
+                <if test="appVersion != null">#{appVersion,jdbcType=VARCHAR},</if>
+                <if test="apiEndPoint != null">#{apiEndPoint,jdbcType=VARCHAR},</if>
+                <if test="orgName != null">#{orgName,jdbcType=VARCHAR},</if>
+                <if test="spaceName != null">#{spaceName,jdbcType=VARCHAR},</if>
+                <if test="extensionFileUid != null">#{extensionFileUid,jdbcType=VARCHAR},</if>
+                <if test="deployAccount != null">#{deployAccount,jdbcType=VARCHAR},</if>
+                <if test="createTime != null">#{createTime,jdbcType=TIMESTAMP},</if>
+                <if test="createBy != null">#{createBy,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.sap.peiqiplatform.entity.po.DeployAppInvoluntaryRecord">
+        update deploy_app_involuntary_record
+        <set>
+                <if test="mtarUploadFlag != null">
+                    mtar_upload_flag = #{mtarUploadFlag,jdbcType=INTEGER},
+                </if>
+                <if test="applicationName != null">
+                    application_name = #{applicationName,jdbcType=VARCHAR},
+                </if>
+                <if test="appVersion != null">
+                    app_version = #{appVersion,jdbcType=VARCHAR},
+                </if>
+                <if test="apiEndPoint != null">
+                    api_end_point = #{apiEndPoint,jdbcType=VARCHAR},
+                </if>
+                <if test="orgName != null">
+                    org_name = #{orgName,jdbcType=VARCHAR},
+                </if>
+                <if test="spaceName != null">
+                    space_name = #{spaceName,jdbcType=VARCHAR},
+                </if>
+                <if test="extensionFileUid != null">
+                    extension_file_uid = #{extensionFileUid,jdbcType=VARCHAR},
+                </if>
+                <if test="deployAccount != null">
+                    deploy_account = #{deployAccount,jdbcType=VARCHAR},
+                </if>
+                <if test="createTime != null">
+                    create_time = #{createTime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="createBy != null">
+                    create_by = #{createBy,jdbcType=VARCHAR},
+                </if>
+        </set>
+        where   id = #{id,jdbcType=INTEGER} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.sap.peiqiplatform.entity.po.DeployAppInvoluntaryRecord">
+        update deploy_app_involuntary_record
+        set 
+            mtar_upload_flag =  #{mtarUploadFlag,jdbcType=INTEGER},
+            application_name =  #{applicationName,jdbcType=VARCHAR},
+            app_version =  #{appVersion,jdbcType=VARCHAR},
+            api_end_point =  #{apiEndPoint,jdbcType=VARCHAR},
+            org_name =  #{orgName,jdbcType=VARCHAR},
+            space_name =  #{spaceName,jdbcType=VARCHAR},
+            extension_file_uid =  #{extensionFileUid,jdbcType=VARCHAR},
+            deploy_account =  #{deployAccount,jdbcType=VARCHAR},
+            create_time =  #{createTime,jdbcType=TIMESTAMP},
+            create_by =  #{createBy,jdbcType=VARCHAR}
+        where   id = #{id,jdbcType=INTEGER} 
+    </update>
 </mapper>

@@ -1,6 +1,9 @@
 package com.sap.peiqiplatform.mapper;
 
 import com.sap.peiqiplatform.entity.po.UploadFileInfo;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
 * @author jinmao
@@ -21,5 +24,9 @@ public interface UploadFileInfoMapper {
     int updateByPrimaryKeySelective(UploadFileInfo record);
 
     int updateByPrimaryKey(UploadFileInfo record);
+
+    UploadFileInfo getUploadFileByUid(@Param("fileUid") String fileUid);
+
+    List<UploadFileInfo> getUploadFileByType(@Param("fileType") Integer fileType);
 
 }

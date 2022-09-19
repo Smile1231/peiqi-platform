@@ -32,7 +32,7 @@ public class SubmitDeployController {
     private IVoluntarySubmitDeployService submitDeployService;
 
     @PostMapping("/submit")
-    public ResultVO<Object> submitVoluntaryDeploy(@RequestBody  @Valid VoluntaryDeployEntity voluntaryDeployEntity){
+    public ResultVO<Object> submitVoluntaryDeploy(@RequestBody  @Valid VoluntaryDeployEntity voluntaryDeployEntity) throws InterruptedException {
         LOGUtil.printLog(log,START_VOLUNTARY_DEPLOY.getLogDescription());
         submitDeployService.submitDeployAction(voluntaryDeployEntity);
         return new ResultVO<>(ResultCodeEnum.SUCCESS);

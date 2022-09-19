@@ -21,4 +21,6 @@ mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.sap.peiqiplatform.entity
 shell:
- deployFile: deploy.sh
+ deployFileDirectory: shell
+ deployFileName: deploy.sh
+ logFileName: log.txt

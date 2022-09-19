@@ -18,7 +18,7 @@ public class DeployAppLog implements Serializable {
     /**
      * id in deploy_app_record
      */
-    private Integer deployAppId;
+    private Integer deployRecordId;
 
     /**
      * 0 -- success  1 -- failed
@@ -34,6 +34,11 @@ public class DeployAppLog implements Serializable {
      * 
      */
     private String logFilePath;
+
+    /**
+     * 
+     */
+    private String takeTime;
 
     /**
      * 

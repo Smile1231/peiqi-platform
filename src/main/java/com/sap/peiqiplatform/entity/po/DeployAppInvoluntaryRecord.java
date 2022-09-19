@@ -2,18 +2,13 @@ package com.sap.peiqiplatform.entity.po;
 
 import java.io.Serializable;
 import java.util.Date;
-
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
- * deploy_app_involuntary_record
- * @author 
+ * 
+ * @TableName deploy_app_involuntary_record
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class DeployAppInvoluntaryRecord implements Serializable {
     /**
      * primary key
@@ -26,27 +21,48 @@ public class DeployAppInvoluntaryRecord implements Serializable {
     private Integer mtarUploadFlag;
 
     /**
-     * id in app_table 
+     * 
      */
-    private Integer applicationId;
+    private String applicationName;
 
+    /**
+     * 
+     */
     private String appVersion;
 
+    /**
+     * 
+     */
     private String apiEndPoint;
 
+    /**
+     * 
+     */
     private String orgName;
 
+    /**
+     * 
+     */
     private String spaceName;
 
     /**
      * uid in upload file info
      */
-    private Integer extensionFileUid;
+    private String extensionFileUid;
 
+    /**
+     * 
+     */
     private String deployAccount;
 
+    /**
+     * 
+     */
     private Date createTime;
 
+    /**
+     * 
+     */
     private String createBy;
 
     private static final long serialVersionUID = 1L;

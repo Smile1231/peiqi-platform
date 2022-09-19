@@ -2,10 +2,15 @@ package com.sap.peiqiplatform;
 
 import com.sap.peiqiplatform.entity.po.AppTable;
 import com.sap.peiqiplatform.mapper.AppTableMapper;
+import com.sap.peiqiplatform.service.involuntary.IInvoluntaryService;
+import com.sap.peiqiplatform.service.involuntary.impl.InvoluntaryServiceImpl;
+import com.sap.peiqiplatform.service.involuntary.impl.TestInterface;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -72,4 +77,17 @@ class PeiqiPlantformApplicationTests {
 
     }
 
+    @Test
+    public void testReferTransfer(){
+        IInvoluntaryService involuntaryService = new TestInterface();
+        interfaceTest(involuntaryService);
+
+        System.out.println(involuntaryService);
+    }
+
+    public boolean interfaceTest(IInvoluntaryService involuntaryService){
+        involuntaryService = new InvoluntaryServiceImpl();
+
+        return true;
+    }
 }

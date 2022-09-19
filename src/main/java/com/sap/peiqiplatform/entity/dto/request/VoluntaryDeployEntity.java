@@ -1,6 +1,7 @@
 package com.sap.peiqiplatform.entity.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sap.peiqiplatform.entity.dto.request.base.DeployEntity;
 import com.sap.peiqiplatform.entity.dto.response.UploadRes;
 import lombok.Data;
 
@@ -16,26 +17,10 @@ import java.util.ArrayList;
  * @createTime 2022-08-22  09:01:00
  */
 @Data
-public class VoluntaryDeployEntity {
-
-    @NotBlank(message = "Api EndPoint can not be empty")
-    @JsonProperty("apiEndPoint")
-    private String apiEndPoint;
-
-    @NotBlank(message = "org name can not be empty")
-    @JsonProperty("orgName")
-    private String orgName;
-
-    @NotBlank(message = "space name can not be empty")
-    @JsonProperty("spaceName")
-    private String spaceName;
+public class VoluntaryDeployEntity extends DeployEntity {
 
     @NotNull(message = "matr file can not be null")
     @JsonProperty("mtarFileList")
     private ArrayList<UploadRes> mtarFileList;
-
-    @NotNull(message = "extension file can not be null")
-    @JsonProperty("extensionFileList")
-    private ArrayList<UploadRes> extensionFileList;
 
 }

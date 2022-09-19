@@ -3,6 +3,7 @@ package com.sap.peiqiplatform.check;
 import cn.hutool.core.collection.CollUtil;
 import com.sap.peiqiplatform.constant.CommonConstants;
 import com.sap.peiqiplatform.entity.bo.ParamCheckVo;
+import com.sap.peiqiplatform.entity.dto.request.InvoluntaryDeployEntity;
 import com.sap.peiqiplatform.entity.dto.request.VoluntaryDeployEntity;
 import com.sap.peiqiplatform.entity.dto.response.UploadRes;
 import com.sap.peiqiplatform.exception.APIException;
@@ -46,16 +47,29 @@ public class FileVerify {
         return paramCheckVo;
     }
 
-    public static void checkFileListNum(VoluntaryDeployEntity voluntaryDeployEntity){
-        ArrayList<UploadRes> mtarFileList = voluntaryDeployEntity.getMtarFileList();
-        ArrayList<UploadRes> extensionFileList = voluntaryDeployEntity.getExtensionFileList();
+    public static void checkFileListNum(Object obj){
 
-        if (CollUtil.isEmpty(mtarFileList) || mtarFileList.size() > ONE){
-            throw new APIException("`mtar` file can not empty and can only upload one !");
+        if (obj instanceof VoluntaryDeployEntity){
+            VoluntaryDeployEntity voluntaryDeployEntity = (VoluntaryDeployEntity) obj;
+            ArrayList<UploadRes> mtarFileList = voluntaryDeployEntity.getMtarFileList();
+            ArrayList<UploadRes> extensionFileList = voluntaryDeployEntity.getExtensionFileList();
+
+            if (CollUtil.isEmpty(mtarFileList) || mtarFileList.size() > ONE){
+                throw new APIException("`mtar` file can not empty and can only upload one !");
+            }
+            if (CollUtil.isEmpty(extensionFileList) || extensionFileList.size() > ONE){
+                throw new APIException("`mtaext` file can not empty and  can only upload one !");
+            }
         }
-        if (CollUtil.isEmpty(extensionFileList) || extensionFileList.size() > ONE){
-            throw new APIException("`mtaext` file can not empty and  can only upload one !");
+        else if (obj instanceof InvoluntaryDeployEntity){
+            InvoluntaryDeployEntity involuntaryDeployEntity = (InvoluntaryDeployEntity) obj;
+            ArrayList<UploadRes> extensionFileList = involuntaryDeployEntity.getExtensionFileList();
+//            String mtaExtText = involuntaryDeployEntity.getMtaExtText();
+            if (CollUtil.isEmpty(extensionFileList) || extensionFileList.size() > ONE){
+                throw new APIException("`mtaext` file can not empty and  can only upload one !");
+            }
         }
+
     }
 
     public static void checkFileExist(String fileUrl){

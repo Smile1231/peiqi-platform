@@ -22,6 +22,10 @@ public class FileUtil {
         return  size / 1024 / 1024;
     }
 
+    public static String jointDownloadFileName(String appName, String version){
+        return appName + RAIL + version + POINT + MTAR;
+    }
+
     public static String jointNewFileName(String fileUid , String fileSuffix){
         return fileUid + POINT + fileSuffix;
     }

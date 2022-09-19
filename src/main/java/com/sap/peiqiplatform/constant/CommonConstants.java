@@ -16,4 +16,5 @@ public class CommonConstants {
     public static final Long MAX_UPLOAD_FILE = 500L;
 
     public static final String DEFAULT_DEPLOY_ACCOUNT = "test@sap.com";
+    public static final String DEFAULT_DEPLOY_ACCOUNT_PASSWORD = "test@sap.com";
 }

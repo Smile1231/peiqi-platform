@@ -22,4 +22,6 @@ public class DirectoryConstants {
 
     public static final String MTAR = "mtar";
     public static final String POINT = ".";
+
+    public static final String RAIL = "-";
 }

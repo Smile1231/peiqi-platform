@@ -6,16 +6,18 @@
 
     <resultMap id="BaseResultMap" type="com.sap.peiqiplatform.entity.po.DeployAppLog">
             <id property="id" column="id" jdbcType="INTEGER"/>
-            <result property="deployAppId" column="deploy_app_id" jdbcType="INTEGER"/>
+            <result property="deployRecordId" column="deploy_record_id" jdbcType="INTEGER"/>
             <result property="status" column="status" jdbcType="INTEGER"/>
             <result property="logInfo" column="log_info" jdbcType="VARCHAR"/>
             <result property="logFilePath" column="log_file_path" jdbcType="VARCHAR"/>
+            <result property="takeTime" column="take_time" jdbcType="VARCHAR"/>
             <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,deploy_app_id,status,
-        log_info,log_file_path,create_time
+        id,deploy_record_id,status,
+        log_info,log_file_path,take_time,
+        create_time
     </sql>
 
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
@@ -31,37 +33,39 @@
     </delete>
     <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.sap.peiqiplatform.entity.po.DeployAppLog" useGeneratedKeys="true">
         insert into deploy_app_log
-        ( id,deploy_app_id,status
-        ,log_info,log_file_path,create_time
-        )
-        values (#{id,jdbcType=INTEGER},#{deployAppId,jdbcType=INTEGER},#{status,jdbcType=INTEGER}
-        ,#{logInfo,jdbcType=VARCHAR},#{logFilePath,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP}
-        )
+        ( id,deploy_record_id,status
+        ,log_info,log_file_path,take_time
+        ,create_time)
+        values (#{id,jdbcType=INTEGER},#{deployRecordId,jdbcType=INTEGER},#{status,jdbcType=INTEGER}
+        ,#{logInfo,jdbcType=VARCHAR},#{logFilePath,jdbcType=VARCHAR},#{takeTime,jdbcType=VARCHAR}
+        ,#{createTime,jdbcType=TIMESTAMP})
     </insert>
     <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.sap.peiqiplatform.entity.po.DeployAppLog" useGeneratedKeys="true">
         insert into deploy_app_log
         <trim prefix="(" suffix=")" suffixOverrides=",">
                 <if test="id != null">id,</if>
-                <if test="deployAppId != null">deploy_app_id,</if>
+                <if test="deployRecordId != null">deploy_record_id,</if>
                 <if test="status != null">status,</if>
                 <if test="logInfo != null">log_info,</if>
                 <if test="logFilePath != null">log_file_path,</if>
+                <if test="takeTime != null">take_time,</if>
                 <if test="createTime != null">create_time,</if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
                 <if test="id != null">#{id,jdbcType=INTEGER},</if>
-                <if test="deployAppId != null">#{deployAppId,jdbcType=INTEGER},</if>
+                <if test="deployRecordId != null">#{deployRecordId,jdbcType=INTEGER},</if>
                 <if test="status != null">#{status,jdbcType=INTEGER},</if>
                 <if test="logInfo != null">#{logInfo,jdbcType=VARCHAR},</if>
                 <if test="logFilePath != null">#{logFilePath,jdbcType=VARCHAR},</if>
+                <if test="takeTime != null">#{takeTime,jdbcType=VARCHAR},</if>
                 <if test="createTime != null">#{createTime,jdbcType=TIMESTAMP},</if>
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="com.sap.peiqiplatform.entity.po.DeployAppLog">
         update deploy_app_log
         <set>
-                <if test="deployAppId != null">
-                    deploy_app_id = #{deployAppId,jdbcType=INTEGER},
+                <if test="deployRecordId != null">
+                    deploy_record_id = #{deployRecordId,jdbcType=INTEGER},
                 </if>
                 <if test="status != null">
                     status = #{status,jdbcType=INTEGER},
@@ -72,6 +76,9 @@
                 <if test="logFilePath != null">
                     log_file_path = #{logFilePath,jdbcType=VARCHAR},
                 </if>
+                <if test="takeTime != null">
+                    take_time = #{takeTime,jdbcType=VARCHAR},
+                </if>
                 <if test="createTime != null">
                     create_time = #{createTime,jdbcType=TIMESTAMP},
                 </if>
@@ -81,10 +88,11 @@
     <update id="updateByPrimaryKey" parameterType="com.sap.peiqiplatform.entity.po.DeployAppLog">
         update deploy_app_log
         set 
-            deploy_app_id =  #{deployAppId,jdbcType=INTEGER},
+            deploy_record_id =  #{deployRecordId,jdbcType=INTEGER},
             status =  #{status,jdbcType=INTEGER},
             log_info =  #{logInfo,jdbcType=VARCHAR},
             log_file_path =  #{logFilePath,jdbcType=VARCHAR},
+            take_time =  #{takeTime,jdbcType=VARCHAR},
             create_time =  #{createTime,jdbcType=TIMESTAMP}
         where   id = #{id,jdbcType=INTEGER} 
     </update>

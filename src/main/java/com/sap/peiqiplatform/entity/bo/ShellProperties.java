@@ -15,5 +15,8 @@ import org.springframework.stereotype.Component;
 @Data
 @ConfigurationProperties(prefix = "shell")
 public class ShellProperties {
-    private String deployFile;
+
+    private String  deployFileDirectory;
+    private String  deployFileName;
+    private String logFileName;
 }
